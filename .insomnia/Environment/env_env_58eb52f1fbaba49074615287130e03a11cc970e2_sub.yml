@@ -1,14 +1,18 @@
 _id: env_env_58eb52f1fbaba49074615287130e03a11cc970e2_sub
 type: Environment
 parentId: env_58eb52f1fbaba49074615287130e03a11cc970e2
-modified: 1667225261581
+modified: 1667239755461
 created: 1667225261581
-name: OpenAPI env
+name: mock
 data:
   scheme: http
   base_path: ""
-  host: example.com
-dataPropertyOrder: null
+  host: localhost:3000
+dataPropertyOrder:
+  "&":
+    - scheme
+    - base_path
+    - host
 color: null
 isPrivate: false
 metaSortKey: 1667225261581

@@ -1,7 +1,7 @@
 _id: spc_cfd3cb71496d467299baefae57008bfe
 type: ApiSpec
 parentId: wrk_5e4810a1d7b9456995c2136aa4c7e7e9
-modified: 1667238685056
+modified: 1667239641634
 created: 1667225195850
 fileName: hello-world.yaml
 contents: |-
@@ -11,7 +11,8 @@ contents: |-
     title: Sample API
     description: A sample API to illustrate OpenAPI concepts
   servers:
-    - url: http://localhost:8080
+    - url: http://localhost:3000
+      description: mockoon
   paths:
     /list:
       get:
