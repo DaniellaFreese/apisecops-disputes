@@ -1,0 +1,21 @@
+_id: req_wrk_5e4810a1d7b9456995c2136aa4c7e7e9612a22d0
+type: Request
+parentId: wrk_5e4810a1d7b9456995c2136aa4c7e7e9
+modified: 1667226217952
+created: 1667226217952
+url: "{{ base_url }}/list/{{ id }}"
+name: /list/{id}
+description: ""
+method: GET
+body: {}
+parameters: []
+headers: []
+authentication: {}
+metaSortKey: -1667226217952
+isPrivate: false
+settingStoreCookies: true
+settingSendCookies: true
+settingDisableRenderRequestBody: false
+settingEncodeUrl: true
+settingRebuildPath: true
+settingFollowRedirects: global

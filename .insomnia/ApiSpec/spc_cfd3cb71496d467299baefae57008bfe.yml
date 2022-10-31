@@ -1,0 +1,34 @@
+_id: spc_cfd3cb71496d467299baefae57008bfe
+type: ApiSpec
+parentId: wrk_5e4810a1d7b9456995c2136aa4c7e7e9
+modified: 1667238685056
+created: 1667225195850
+fileName: hello-world.yaml
+contents: |-
+  openapi: 3.0.0
+  info:
+    version: 1.0.0
+    title: Sample API
+    description: A sample API to illustrate OpenAPI concepts
+  servers:
+    - url: http://localhost:8080
+  paths:
+    /list:
+      get:
+        description: Returns a list of stuff              
+        responses:
+          '200':
+            description: Successful response
+    /list/{id}:
+      get:
+        parameters:
+          - in: path
+            name: id
+            schema:
+              type: string
+            required: true
+        description: Return a single Item         
+        responses:
+          '200':
+            description: Successful response          
+contentType: yaml
