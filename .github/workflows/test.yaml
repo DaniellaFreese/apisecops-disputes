@@ -19,7 +19,7 @@ jobs:
       - name: Build the stack
         run: docker-compose up -d
       - name: Start Mock Server
-        run: docker run --rm -p 4010:4010 -t stoplight/prism mock -h 0.0.0.0 apispec.yaml
+        run: docker run --rm -p 4010:4010 -t stoplight/prism mock -h 0.0.0.0 /app/apispec.yaml
       - name: Run test suites
         run: inso run test "spc_cfd3cb71496d467299baefae57008bfe" --env UnitTest --ci
       - name: Generate declarative config

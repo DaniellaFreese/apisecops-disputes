@@ -5,3 +5,5 @@ services:
     image: "stoplight/prism:latest"
     ports: 
       - "4010:4010"
+volumes: 
+  - ./:/app
