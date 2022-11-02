@@ -1,9 +1,6 @@
 name: API Test
 
-on:
-  push:
-    branches:
-      - main
+on: workflow_dispatch
 
 jobs:
   Linux:
