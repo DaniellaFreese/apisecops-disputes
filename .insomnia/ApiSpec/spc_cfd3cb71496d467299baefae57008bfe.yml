@@ -1,7 +1,7 @@
 _id: spc_cfd3cb71496d467299baefae57008bfe
 type: ApiSpec
 parentId: wrk_5e4810a1d7b9456995c2136aa4c7e7e9
-modified: 1667415257546
+modified: 1667420665416
 created: 1667225195850
 fileName: disputes.yaml
 contents: "openapi: 3.0.0
@@ -10,9 +10,9 @@ contents: "openapi: 3.0.0
 
   \  version: 1.0.0
 
-  \  title: 'Acme Bank - Disputes API eval ('
+  \  title: 'Acme Bank - Disputes API'
 
-  \  description: \"Acme Bank - Disputes API eval('2 + 2')\"
+  \  description: \"Acme Bank - Disputes API\"
 
   servers:
 
