@@ -14,6 +14,8 @@ jobs:
           inso-version: 3.5.0
       - name: Lint
         run: inso lint spec "spc_cfd3cb71496d467299baefae57008bfe" --ci
+      - name: Build the stack
+        run: docker-compose up -d
       - name: Run test suites
         run: inso run test "spc_cfd3cb71496d467299baefae57008bfe" --env UnitTest --ci
       - name: Generate declarative config
