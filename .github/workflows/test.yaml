@@ -1,0 +1,23 @@
+name: API Test
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  Linux:
+    name: Validate API spec
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout branch
+        uses: actions/checkout@v1
+      - uses: kong/setup-inso@v1
+        with:
+          inso-version: 3.5.0
+      - name: Lint
+        run: inso lint spec "spc_cfd3cb71496d467299baefae57008bfe" --ci
+      - name: Run test suites
+        run: inso run test "spc_cfd3cb71496d467299baefae57008bfe" --env UnitTest --ci
+      - name: Generate declarative config
+        run: inso generate config "spc_cfd3cb71496d467299baefae57008bfe" --type declarative --ci
