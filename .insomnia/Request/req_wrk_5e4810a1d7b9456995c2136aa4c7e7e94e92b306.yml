@@ -1,17 +1,17 @@
-_id: req_wrk_5e4810a1d7b9456995c2136aa4c7e7e9612a22d0
+_id: req_wrk_5e4810a1d7b9456995c2136aa4c7e7e94e92b306
 type: Request
 parentId: wrk_5e4810a1d7b9456995c2136aa4c7e7e9
-modified: 1667323703796
-created: 1667226217952
-url: "{{ base_url }}/list/{{ id }}"
-name: /list/{id}
+modified: 1667414883901
+created: 1667414883901
+url: "{{ base_url }}/disputes"
+name: /disputes
 description: ""
 method: GET
 body: {}
 parameters: []
 headers: []
 authentication: {}
-metaSortKey: -1667226217952
+metaSortKey: -1667414883901
 isPrivate: false
 settingStoreCookies: true
 settingSendCookies: true
