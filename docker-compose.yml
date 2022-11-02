@@ -4,6 +4,6 @@ services:
     container_name: prism
     image: "stoplight/prism:latest"
     ports: 
-      - "4010:4010"
+      - "9010:4010"
     volumes: 
       - ./:/app
