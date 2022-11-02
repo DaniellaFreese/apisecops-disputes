@@ -1,35 +1,162 @@
 _id: spc_cfd3cb71496d467299baefae57008bfe
 type: ApiSpec
 parentId: wrk_5e4810a1d7b9456995c2136aa4c7e7e9
-modified: 1667239641634
+modified: 1667414611869
 created: 1667225195850
-fileName: hello-world.yaml
-contents: |-
-  openapi: 3.0.0
+fileName: disputes.yaml
+contents: "openapi: 3.0.0
+
   info:
-    version: 1.0.0
-    title: Sample API
-    description: A sample API to illustrate OpenAPI concepts
+
+  \  version: 1.0.0
+
+  \  title: 'Acme Bank - Disputes API eval ('
+
+  \  description: \"Acme Bank - Disputes API eval('2 + 2')\"
+
   servers:
-    - url: http://localhost:3000
-      description: mockoon
+
+  \  - url: http://mockbin.org
+
+  \    description: mockbin
+
+  \  - url: http://acme-dev-gateway.io/8000
+
+  \    description: DEV API Gateway - mocked\ 
+
+  \  - url: http://acme-staging-gateway.io/8000
+
+  \    description: STAGING API Gateway - integration testing
+
   paths:
-    /list:
-      get:
-        description: Returns a list of stuff              
-        responses:
-          '200':
-            description: Successful response
-    /list/{id}:
-      get:
-        parameters:
-          - in: path
-            name: id
-            schema:
-              type: string
-            required: true
-        description: Return a single Item         
-        responses:
-          '200':
-            description: Successful response          
+
+  \  /disputes:
+
+  \    x-kong-name: disputes
+
+  \    x-kong-route-defaults:
+
+  \      strip_path: false
+
+  \      protocols: [http]
+
+  \    get:
+
+  \      operationId: \"get-list-dispute\"
+
+  \      description: Return a list of disputes
+
+  \      responses:\ 
+
+  \       '200':\ 
+
+  \         description: successful response - return a list of disputes
+
+  \         content:\ 
+
+  \           application/json:\ 
+
+  \             schema:\ 
+
+  \               type: array
+
+  \               items:\ 
+
+  \                 $ref: '#/components/schemas/Dispute'
+
+  \       '400':\ 
+
+  \          description: Bad request. User Id must ben an integer larger than
+  zero
+
+  \       '401':
+
+  \          description: Unauthorized.
+
+  \       '5XX':\ 
+
+  \          description: Unexpected Error.\ 
+
+  \  /dispute/{id}:
+
+  \    get:
+
+  \      operationId: \"get-dispute\"
+
+  \      parameters:
+
+  \         - in: path
+
+  \           name: id
+
+  \           schema:
+
+  \             type: string
+
+  \           required: true
+
+  \      description: Return a list of disputes
+
+  \      responses:\ 
+
+  \       '200':\ 
+
+  \         description: successful response - return dispute
+
+  \         content:\ 
+
+  \           application/json:
+
+  \             schema:\ 
+
+  \               $ref: '#/components/schemas/Dispute'
+
+  \       '400':\ 
+
+  \         description: Bad request. User Id must ben an integer larger than
+  zero
+
+  \       '401':
+
+  \         description: Unauthorized.
+
+  \       '5XX':\ 
+
+  \         description: Unexpected Error.
+
+  components:
+
+  \  schemas:\ 
+
+  \    Dispute:
+
+  \      type: object\ 
+
+  \      properties:
+
+  \        cardId:\ 
+
+  \          type: string
+
+  \        chargeId:\ 
+
+  \          type: string\ 
+
+  \        reason:\ 
+
+  \          type: string
+
+  \        id:\ 
+
+  \          type: integer
+
+  \        status:\ 
+
+  \          type: string
+
+  \      \ 
+
+  \       \ 
+
+  \  "
 contentType: yaml
