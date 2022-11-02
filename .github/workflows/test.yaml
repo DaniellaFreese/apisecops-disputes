@@ -17,4 +17,4 @@ jobs:
       - name: Run test suites
         run: inso run test "spc_cfd3cb71496d467299baefae57008bfe" --env UnitTest --ci
       - name: Generate declarative config
-        run: inso generate config "spc_cfd3cb71496d467299baefae57008bfe" --type declarative --ci
+        run: inso generate config "spc_cfd3cb71496d467299baefae57008bfe" --type declarative --ci -o disputes_deck.yaml
