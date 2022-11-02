@@ -6,6 +6,8 @@ jobs:
   Linux:
     name: Validate API spec
     runs-on: ubuntu-latest
+
+    
     steps:
       - name: Checkout branch
         uses: actions/checkout@v1
@@ -17,7 +19,7 @@ jobs:
       - name: Export the apispec
         run: inso export spec spc_cfd3cb71496d467299baefae57008bfe > apispec.yml 
       - name: Build the stack
-        run: docker-compose up -d
+        run: docker-compose up
       - name: validate mock is up
         run: curl -X GET http://localhost:9010/disputes
       - name: Run test suites
