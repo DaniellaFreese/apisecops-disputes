@@ -1,0 +1,9 @@
+version: '3'
+services:
+  mock:
+    container_name: prism
+    image: "stoplight/prism:latest"
+    ports: 
+      - "4010:4010"
+    volumes: 
+      - ./:/app
