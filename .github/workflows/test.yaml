@@ -18,8 +18,10 @@ jobs:
         run: inso lint spec "spc_cfd3cb71496d467299baefae57008bfe" --ci
       - name: Export the apispec
         run: inso export spec spc_cfd3cb71496d467299baefae57008bfe > apispec.yml 
-      - name: Build the stack
+      - name: Start the Containers
         run: docker-compose -f "docker-compose.yml" up -d
+      - name: Connect to the Docker Network
+        run: docker ps -a 
       - name: validate mock is up
         run: curl -X GET http://localhost:9010/disputes
       - name: Run test suites
