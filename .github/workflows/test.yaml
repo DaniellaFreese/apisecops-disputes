@@ -23,7 +23,7 @@ jobs:
       - name: Connect to the Docker Network
         run: docker ps -a 
       - name: validate mock is up
-        run: curl -X GET http://localhost:9010/disputes
+        run: docker logs insomnia-helloworld_mock_1
       - name: Run test suites
         run: inso run test "spc_cfd3cb71496d467299baefae57008bfe" --env UnitTest --ci
       - name: Generate declarative config
