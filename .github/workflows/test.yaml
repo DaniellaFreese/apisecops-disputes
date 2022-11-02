@@ -15,9 +15,11 @@ jobs:
       - name: Lint
         run: inso lint spec "spc_cfd3cb71496d467299baefae57008bfe" --ci
       - name: Export the apispec
-        run: inso export spec spc_cfd3cb71496d467299baefae57008bfe > apispec.yaml 
+        run: inso export spec spc_cfd3cb71496d467299baefae57008bfe > apispec.yml 
       - name: Build the stack
         run: docker-compose up -d
+      - name: validate mock is up
+        run: curl -X GET /
       - name: Run test suites
         run: inso run test "spc_cfd3cb71496d467299baefae57008bfe" --env UnitTest --ci
       - name: Generate declarative config
