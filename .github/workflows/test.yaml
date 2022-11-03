@@ -1,13 +1,18 @@
 name: API Test
 
-on: workflow_dispatch
-
+on: 
+  workflow_dispatch:
+    inputs: 
+      version:
+        description: "New API Ops Version"
+        required: true
+        type: string
+        default: 1.0.0
 jobs:
-  Linux:
+  test:
     name: Validate API spec
     runs-on: ubuntu-latest
 
-    
     steps:
       - name: Checkout branch
         uses: actions/checkout@v2
@@ -40,3 +45,39 @@ jobs:
           branch: master
           file_pattern: 'disputes_deck.yml apispec.yml'
           commit_message: "Automated - Create Disputes Deck"
+
+  create-gateway-pr:
+    runs-on: ubuntu-latest
+    needs: [test]
+    steps:
+      - name: Checkout branch
+        uses: actions/checkout@v2
+        with: 
+          repository: DaniellaFreese/insomnia-helloworld
+          path: disputes
+          fetch-depth: 0
+      - name: Checkout API Gateway Repo
+        uses: actions/checkout@v2
+        with:
+          repository: DaniellaFreese/apiops-gateway
+          path: apiops
+          fetch-depth: 0
+      - name: Setup Git Config 
+        run: |
+          git config user.email "github-actions@users.noreply.github.com"
+          git config user.name "github-actions"
+
+      - name: Copy content over and create a branch
+        run: | 
+          cp disputes/apispec.yml apiops/disputes/apispec.yml
+          cp disputes/disputes_dec.yml apiops/disputes/disputes_deck.yml
+      
+      - name: Commit and Push
+        uses: stefanzweifel/git-auto-commit-action@v4
+        with:
+          repository: apiops
+          branch: disputes-v${{ inputs.version }}
+          file_pattern: 'disputes_deck.yml apispec.yml'
+          commit_message: "Disputes APISpec and Deck"
+          create_branch: true
+
