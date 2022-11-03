@@ -1,0 +1,38 @@
+_format_version: "1.1"
+services:
+  - name: some_title_with_eval(
+    protocol: http
+    host: some_title_with_eval(.upstream
+    port: 80
+    path: /
+    plugins: []
+    routes:
+      - strip_path: false
+        protocols:
+          - http
+        tags:
+          &a1
+          - OAS3_import
+        name: some_title_with_eval(-get-list-dispute
+        methods:
+          - GET
+        paths:
+          - /disputes$
+      - tags: *a1
+        name: some_title_with_eval(-get-dispute
+        methods:
+          - GET
+        paths:
+          - /dispute/(?<id>[^\/]+)$
+        strip_path: false
+    tags: *a1
+upstreams:
+  - name: some_title_with_eval(.upstream
+    targets:
+      - target: mockbin.org:80
+        tags: *a1
+      - target: acme-dev-gateway.io:80
+        tags: *a1
+      - target: acme-staging-gateway.io:80
+        tags: *a1
+    tags: *a1
