@@ -60,6 +60,7 @@ jobs:
         uses: actions/checkout@v2
         with:
           repository: DaniellaFreese/apiops-gateway
+          branch: dev
           path: apiops
           fetch-depth: 0
       - name: Setup Git Config 
