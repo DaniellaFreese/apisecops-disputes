@@ -1,7 +1,7 @@
 _id: spc_cfd3cb71496d467299baefae57008bfe
 type: ApiSpec
 parentId: wrk_5e4810a1d7b9456995c2136aa4c7e7e9
-modified: 1667490254334
+modified: 1667499945755
 created: 1667225195850
 fileName: disputes.yaml
 contents: "openapi: 3.0.0
@@ -16,26 +16,15 @@ contents: "openapi: 3.0.0
 
   servers:
 
-  \  - url: http://acme-{env}-gateway.io/api/v1
+  \  - url: http://acme-dev-gateway.io/api/v1
 
-  \    description: Non-Prod Servers
+  \    description: Dev Server
 
-  \    variables:\ 
+  \  - url: http://acme-dev-gateway.io/api/v1
 
-  \      env:\ 
+  \    description: Staging Server
 
-  \        enum:
-
-  \        - dev
-
-  \        - staging
-
-  \        default: dev       \ 
-
-  \  - url: http://acme-prod-gateway.io/api/v1
-
-  \    description: Prod Server
-
+  \ \ 
 
   x-kong-service-defaults:
 
@@ -47,7 +36,6 @@ contents: "openapi: 3.0.0
 
   \  read_timeout: 30000
 
-  \\ 
 
   x-kong-name: disputes
 
