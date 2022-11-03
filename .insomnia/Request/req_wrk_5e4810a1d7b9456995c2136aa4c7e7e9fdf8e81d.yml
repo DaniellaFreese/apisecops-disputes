@@ -1,0 +1,24 @@
+_id: req_wrk_5e4810a1d7b9456995c2136aa4c7e7e9fdf8e81d
+type: Request
+parentId: wrk_5e4810a1d7b9456995c2136aa4c7e7e9
+modified: 1667487179360
+created: 1667487179360
+url: "{{ base_url }}/dispute/{{ id }}"
+name: Return a list of disputes
+description: ""
+method: GET
+body: {}
+parameters: []
+headers:
+  - name: apikey
+    disabled: false
+    value: "{{ apikey }}"
+authentication: {}
+metaSortKey: -1667487179360
+isPrivate: false
+settingStoreCookies: true
+settingSendCookies: true
+settingDisableRenderRequestBody: false
+settingEncodeUrl: true
+settingRebuildPath: true
+settingFollowRedirects: global

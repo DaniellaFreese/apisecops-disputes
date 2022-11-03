@@ -8,6 +8,7 @@ data:
   scheme: http
   base_path: ""
   host: localhost:4010
+  apikey: apikey
   id: 1
 dataPropertyOrder:
   "&":
