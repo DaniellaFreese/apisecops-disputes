@@ -21,7 +21,7 @@ jobs:
       - name: Start the Containers
         run: docker-compose -f "docker-compose.yml" up -d
       - name: Validate Connection
-        run: curl -X GET http://insomnia-helloworld-mock-1:9010/disputes
+        run: curl -X GET http://mock:9010/disputes
       - name: Run test suites
         run: inso run test "spc_cfd3cb71496d467299baefae57008bfe" --env UnitTest --ci
       - name: Generate declarative config
