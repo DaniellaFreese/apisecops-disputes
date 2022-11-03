@@ -1,24 +1,30 @@
 openapi: 3.0.0
 info:
   version: 1.0.0
-  title: 'some title with eval('
+  title: 'Disputes'
   description: "Acme Bank - Disputes API"
 servers:
-  - url: http://mockbin.org
-    description: mock
-  - url: http://acme-dev-gateway.io/8000
-    description: DEV API Gateway - mocked 
-  - url: http://acme-staging-gateway.io/8000
-    description: STAGING API Gateway - integration testing
+  - url: http://acme-dev-gateway.io/api/v1
+    description: Dev Server
+  - url: http://acme-dev-gateway.io/api/v1
+    description: Staging Server
+  
+x-kong-service-defaults:
+  retries: 10
+  connect_timeout: 30000
+  write_timeout: 30000
+  read_timeout: 30000
+
+x-kong-name: disputes
+
 paths:
   /disputes:
-    x-kong-name: disputes
     x-kong-route-defaults:
       strip_path: false
       protocols: [http]
     get:
-      operationId: "get-list-dispute"
-      description: Return a list of disputes
+      operationId: "getListDispute"
+      summary: Return a list of disputes
       responses: 
        '200': 
          description: successful response - return a list of disputes
@@ -36,14 +42,16 @@ paths:
           description: Unexpected Error. 
   /dispute/{id}:
     get:
-      operationId: "get-dispute"
+      operationId: "getDispute"
       parameters:
          - in: path
            name: id
            schema:
              type: string
            required: true
-      description: Return a list of disputes
+      summary: Return a list of disputes
+      security:
+        - keyAuth: []      
       responses: 
        '200': 
          description: successful response - return dispute
@@ -58,6 +66,16 @@ paths:
        '5XX': 
          description: Unexpected Error.
 components:
+  securitySchemes:
+    keyAuth:
+      type: apiKey
+      name: apikey
+      in: header
+      x-kong-security-key-auth:
+        config:
+          key_names: [ "mykey", "yourkey" ]
+          hide_credentials: true
+          run_on_preflight: false
   schemas: 
     Dispute:
       type: object 
@@ -72,6 +90,4 @@ components:
           type: integer
         status: 
           type: string
-       
-        
   
