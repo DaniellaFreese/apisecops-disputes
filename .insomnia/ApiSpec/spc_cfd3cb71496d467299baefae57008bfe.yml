@@ -1,7 +1,7 @@
 _id: spc_cfd3cb71496d467299baefae57008bfe
 type: ApiSpec
 parentId: wrk_5e4810a1d7b9456995c2136aa4c7e7e9
-modified: 1667426866001
+modified: 1667486644640
 created: 1667225195850
 fileName: disputes.yaml
 contents: "openapi: 3.0.0
@@ -10,29 +10,50 @@ contents: "openapi: 3.0.0
 
   \  version: 1.0.0
 
-  \  title: 'some title with eval('
+  \  title: 'Disputes'
 
   \  description: \"Acme Bank - Disputes API\"
 
   servers:
 
-  \  - url: http://mockbin.org
+  \  - url: http://acme-{env}-gateway.io/api/v1
 
-  \    description: mock
+  \    description: Non-Prod Servers
 
-  \  - url: http://acme-dev-gateway.io/8000
+  \    variables:\ 
 
-  \    description: DEV API Gateway - mocked\ 
+  \      env:\ 
 
-  \  - url: http://acme-staging-gateway.io/8000
+  \        enum:
 
-  \    description: STAGING API Gateway - integration testing
+  \        - dev
+
+  \        - staging
+
+  \        default: dev
+
+  \  - url: http://acme-prod-gateway.io/api/v1
+
+  \    description: Prod Server        \ 
+
+  x-kong-service-defaults:
+
+  \  retries: 10
+
+  \  connect_timeout: 30000
+
+  \  write_timeout: 30000
+
+  \  read_timeout: 30000
+
+  \\ 
+
+  x-kong-name: disputes
+
 
   paths:
 
   \  /disputes:
-
-  \    x-kong-name: disputes
 
   \    x-kong-route-defaults:
 
@@ -42,9 +63,13 @@ contents: "openapi: 3.0.0
 
   \    get:
 
-  \      operationId: \"get-list-dispute\"
+  \      operationId: \"getListDispute\"
 
-  \      description: Return a list of disputes
+  \      summary: Return a list of disputes
+
+  \      security:
+
+  \        - keyAuth: []
 
   \      responses:\ 
 
@@ -81,7 +106,7 @@ contents: "openapi: 3.0.0
 
   \    get:
 
-  \      operationId: \"get-dispute\"
+  \      operationId: \"getDispute\"
 
   \      parameters:
 
@@ -95,7 +120,11 @@ contents: "openapi: 3.0.0
 
   \           required: true
 
-  \      description: Return a list of disputes
+  \      summary: Return a list of disputes
+
+  \      security:
+
+  \        - keyAuth: []     \ 
 
   \      responses:\ 
 
@@ -126,6 +155,26 @@ contents: "openapi: 3.0.0
 
   components:
 
+  \  securitySchemes:
+
+  \    keyAuth:
+
+  \      type: apiKey
+
+  \      name: apikey
+
+  \      in: header
+
+  \      x-kong-security-key-auth:
+
+  \        config:
+
+  \          key_names: [ \"mykey\", \"yourkey\" ]
+
+  \          hide_credentials: true
+
+  \          run_on_preflight: false
+
   \  schemas:\ 
 
   \    Dispute:
@@ -154,7 +203,6 @@ contents: "openapi: 3.0.0
 
   \          type: string
 
-  \      \ 
 
   \       \ 
 
