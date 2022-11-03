@@ -22,6 +22,8 @@ jobs:
         run: inso export spec spc_cfd3cb71496d467299baefae57008bfe > apispec.yml 
       - name: Start the Containers
         run: docker-compose -f "docker-compose.yml" up -d
+      - name: Setup tmate session
+        uses: mxschmitt/action-tmate@v3
       - name: Wait for Mock Container to be ready
         run: |
           chmod a+x ./wait-for-it.sh
