@@ -17,7 +17,7 @@ jobs:
       - name: Lint
         run: | 
           echo testing inso lint
-          # inso lint spec "spc_cfd3cb71496d467299baefae57008bfe" --ci
+           inso lint spec "spc_cfd3cb71496d467299baefae57008bfe" --ci
       - name: Export the apispec
         run: inso export spec spc_cfd3cb71496d467299baefae57008bfe > apispec.yml 
       - name: Start the Containers
@@ -28,7 +28,7 @@ jobs:
         run: |
           chmod a+x ./wait-for-it.sh
           ./wait-for-it.sh localhost:4010 -t 10 -- echo "Mocker is up"
-          sleep 30
+          sleep 10
       - uses: nick-fields/retry@v2
         with:
           timeout_minutes: 10
