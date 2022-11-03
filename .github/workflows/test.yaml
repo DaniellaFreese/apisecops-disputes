@@ -31,9 +31,10 @@ jobs:
       - name: Run test suites
         run: inso run test "spc_cfd3cb71496d467299baefae57008bfe" --env UnitTest --ci
       - name: Generate declarative config
-        run: inso generate config "spc_cfd3cb71496d467299baefae57008bfe" --type declarative --ci -o disputes_deck.yaml
+        run: inso generate config "spc_cfd3cb71496d467299baefae57008bfe" --type declarative --ci -o disputes_deck.yml
       - name: Commit and Push
         uses: stefanzweifel/git-auto-commit-action@v4
         with:
           branch: master
+          file_pattern: 'disputes_deck.yml apispec.yml'
           commit_message: "Automated - Create Disputes Deck"
