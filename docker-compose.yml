@@ -4,6 +4,6 @@ services:
     image: "stoplight/prism:latest"
     command: 'mock -h 0.0.0.0 /app/apispec.yml'
     ports: 
-      - "9010:4010"
+      - "4010:4010"
     volumes: 
       - ./:/app
