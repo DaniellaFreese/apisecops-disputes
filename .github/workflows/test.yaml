@@ -27,6 +27,7 @@ jobs:
           chmod a+x ./wait-for-it.sh
           ./wait-for-it.sh localhost:4010 -t 10 -- echo "Mocker is up"
           sleep 10
+          curl -X GET http://localhost:4010/
       - name: Validate Connection
         run: curl -X GET http://localhost:4010/
       - name: Run test suites
