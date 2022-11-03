@@ -15,19 +15,27 @@ jobs:
         with:
           inso-version: 3.5.0
       - name: Lint
-        run: inso lint spec "spc_cfd3cb71496d467299baefae57008bfe" --ci
+        run: | 
+          echo testing inso lint
+           inso lint spec "spc_cfd3cb71496d467299baefae57008bfe" --ci
       - name: Export the apispec
         run: inso export spec spc_cfd3cb71496d467299baefae57008bfe > apispec.yml 
       - name: Start the Containers
         run: docker-compose -f "docker-compose.yml" up -d
+      - name: Setup tmate session
+        uses: mxschmitt/action-tmate@v3
       - name: Wait for Mock Container to be ready
         run: |
           chmod a+x ./wait-for-it.sh
           ./wait-for-it.sh localhost:4010 -t 10 -- echo "Mocker is up"
           sleep 10
-          curl -X GET http://localhost:4010/
+      - uses: nick-fields/retry@v2
+        with:
+          timeout_minutes: 10
+          max_attempts: 10
+          command: curl -X GET http://localhost:4010/
       - name: Validate Connection
-        run: curl -X GET http://localhost:4010/disputes
+        run: curl -X GET http://localhost:4010/
       - name: Run test suites
         run: inso run test "spc_cfd3cb71496d467299baefae57008bfe" --env UnitTest --ci
       - name: Generate declarative config

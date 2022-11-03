@@ -7,3 +7,8 @@ services:
       - "4010:4010"
     volumes: 
       - ./:/app
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:4010/"]
+      interval: 200s
+      timeout: 200s
+      retries: 5  
