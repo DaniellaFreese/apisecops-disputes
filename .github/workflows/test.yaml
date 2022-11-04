@@ -64,16 +64,11 @@ jobs:
           path: apiops
           fetch-depth: 0
           token: ${{ secrets.APIOPS_PAT }}
-      # - name: Setup Git Config 
-      #   run: |
-      #     git config user.email "github-actions@users.noreply.github.com"
-      #     git config user.name "github-actions"
 
       - name: Copy content over and create a branch
         run: | 
-
-          cp disputes/apispec.yml apiops/disputes/apispec.yml
-          cp disputes/disputes_deck.yml apiops/disputes/disputes_kong.yml
+          cp disputes/apispec.yml apiops/devportal/disputes/apispec.yml
+          cp disputes/disputes_deck.yml apiops/deck/disputes/disputes_kong.yml
       
       - name: Commit and Push
         uses: stefanzweifel/git-auto-commit-action@v4
