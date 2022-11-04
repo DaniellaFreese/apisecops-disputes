@@ -64,10 +64,10 @@ jobs:
           path: apiops
           fetch-depth: 0
           token: ${{ secrets.APIOPS_PAT }}
-      - name: Setup Git Config 
-        run: |
-          git config user.email "github-actions@users.noreply.github.com"
-          git config user.name "github-actions"
+      # - name: Setup Git Config 
+      #   run: |
+      #     git config user.email "github-actions@users.noreply.github.com"
+      #     git config user.name "github-actions"
 
       - name: Copy content over and create a branch
         run: | 
