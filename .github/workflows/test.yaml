@@ -70,21 +70,20 @@ jobs:
           cp disputes/apispec.yml apiops/devportal/disputes/apispec.yml
           cp disputes/disputes_deck.yml apiops/deck/disputes/disputes_kong.yml
 
-      - name: Commit and Push
-        uses: stefanzweifel/git-auto-commit-action@v4
-        with:
-          repository: apiops
-          branch: disputes-v${{ inputs.version }}
-          file_pattern: '*.yml'
-          commit_message: "Disputes APISpec and Deck"
-          create_branch: true
+#       - name: Commit and Push
+#         uses: stefanzweifel/git-auto-commit-action@v4
+#         with:
+#           repository: apiops
+#           branch: disputes-v${{ inputs.version }}
+#           file_pattern: '*.yml'
+#           commit_message: "Disputes APISpec and Deck"
+#           create_branch: true
 
       - name: Create Pull Request
         uses: peter-evans/create-pull-request@v4
         with:
           path: apiops
           token: ${{ secrets.APIOPS_PAT }}
-          base: dev
           branch: disputes-v${{ inputs.version }}
           title: 'Disputes Dev APISpec Change'
           commit-message: 'disputes apispec and deck conf disputes_v${{ inputs.version }}'
