@@ -79,13 +79,13 @@ jobs:
           commit_message: "Disputes APISpec and Deck"
           create_branch: true
 
-      - name: Create Pull Request
-        uses: peter-evans/create-pull-request@v4
-        with:
-          path: apiops
-          token: ${{ secrets.APIOPS_PAT }}
-          base: dev
-          branch: disputes-v${{ inputs.version }}
-          title: 'Disputes Dev APISpec Change'
-          commit-message: 'disputes apispec and deck conf disputes_v${{ inputs.version }}'
+      # - name: Create Pull Request
+      #   uses: peter-evans/create-pull-request@v4
+      #   with:
+      #     path: apiops
+      #     token: ${{ secrets.APIOPS_PAT }}
+      #     base: dev
+      #     branch: disputes-v${{ inputs.version }}
+      #     title: 'Disputes Dev APISpec Change'
+      #     commit-message: 'disputes apispec and deck conf disputes_v${{ inputs.version }}'
 
