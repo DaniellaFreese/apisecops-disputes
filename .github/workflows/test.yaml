@@ -71,8 +71,9 @@ jobs:
 
       - name: Copy content over and create a branch
         run: | 
+
           cp disputes/apispec.yml apiops/disputes/apispec.yml
-          cp disputes/disputes_dec.yml apiops/disputes/disputes_deck.yml
+          cp disputes/disputes_deck.yml apiops/disputes/disputes_kong.yml
       
       - name: Commit and Push
         uses: stefanzweifel/git-auto-commit-action@v4
