@@ -54,13 +54,13 @@ jobs:
         uses: actions/checkout@v2
         with: 
           repository: DaniellaFreese/insomnia-helloworld
-          ref: dev
           path: disputes
           fetch-depth: 0
       - name: Checkout API Gateway Repo
         uses: actions/checkout@v2
         with:
           repository: DaniellaFreese/apiops-gateway
+          ref: dev
           path: apiops
           fetch-depth: 0
       - name: Setup Git Config 
