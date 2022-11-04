@@ -63,6 +63,7 @@ jobs:
           ref: dev
           path: apiops
           fetch-depth: 0
+          token: ${{ secrets.APIOPS_PAT }}
       - name: Setup Git Config 
         run: |
           git config user.email "github-actions@users.noreply.github.com"
