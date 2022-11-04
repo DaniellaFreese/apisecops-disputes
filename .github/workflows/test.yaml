@@ -83,7 +83,7 @@ jobs:
         uses: peter-evans/create-pull-request@v4
         with:
           path: apiops
-          token: ${{ secretss.APIOPS_PAT }}
+          token: ${{ secrets.APIOPS_PAT }}
           base: dev
           branch: disputes-v${{ inputs.version }}
           title: 'Disputes Dev APISpec Change'
