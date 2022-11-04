@@ -84,8 +84,8 @@ jobs:
         with:
           path: apiops
           token: ${{ secrets.APIOPS_PAT }}
-          base: dev
-          branch: disputes-v${{ inputs.version }}
+          base: disputes-v${{ inputs.version }}
+          branch: dev
           title: 'Disputes Dev APISpec Change'
           commit-message: 'disputes apispec and deck conf disputes_v${{ inputs.version }}'
 
