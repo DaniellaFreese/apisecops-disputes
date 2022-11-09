@@ -1,0 +1,93 @@
+openapi: 3.0.0
+info:
+  version: 1.0.0
+  title: 'Disputes'
+  description: "Acme Bank - Disputes API"
+servers:
+  - url: http://acme-dev-gateway.io/api/v1
+    description: Dev Server
+  - url: http://acme-dev-gateway.io/api/v1
+    description: Staging Server
+  
+x-kong-service-defaults:
+  retries: 10
+  connect_timeout: 30000
+  write_timeout: 30000
+  read_timeout: 30000
+
+x-kong-name: disputes
+
+paths:
+  /disputes:
+    x-kong-route-defaults:
+      strip_path: false
+      protocols: [http]
+    get:
+      operationId: "getListDispute"
+      summary: Return a list of disputes
+      responses: 
+       '200': 
+         description: successful response - return a list of disputes
+         content: 
+           application/json: 
+             schema: 
+               type: array
+               items: 
+                 $ref: '#/components/schemas/Dispute'
+       '400': 
+          description: Bad request. User Id must ben an integer larger than zero
+       '401':
+          description: Unauthorized.
+       '5XX': 
+          description: Unexpected Error. 
+  /dispute/{id}:
+    get:
+      operationId: "getDispute"
+      parameters:
+         - in: path
+           name: id
+           schema:
+             type: string
+           required: true
+      summary: Return a list of disputes
+      security:
+        - keyAuth: []      
+      responses: 
+       '200': 
+         description: successful response - return dispute
+         content: 
+           application/json:
+             schema: 
+               $ref: '#/components/schemas/Dispute'
+       '400': 
+         description: Bad request. User Id must ben an integer larger than zero
+       '401':
+         description: Unauthorized.
+       '5XX': 
+         description: Unexpected Error.
+components:
+  securitySchemes:
+    keyAuth:
+      type: apiKey
+      name: apikey
+      in: header
+      x-kong-security-key-auth:
+        config:
+          key_names: [ "mykey", "yourkey" ]
+          hide_credentials: true
+          run_on_preflight: false
+  schemas: 
+    Dispute:
+      type: object 
+      properties:
+        cardId: 
+          type: string
+        chargeId: 
+          type: string 
+        reason: 
+          type: string
+        id: 
+          type: integer
+        status: 
+          type: string
+  
