@@ -1,7 +1,7 @@
 _id: req_wrk_5e4810a1d7b9456995c2136aa4c7e7e9fdf8e81d
 type: Request
 parentId: wrk_5e4810a1d7b9456995c2136aa4c7e7e9
-modified: 1667487179360
+modified: 1669130095878
 created: 1667487179360
 url: "{{ base_url }}/dispute/{{ id }}"
 name: Return a list of disputes
@@ -12,7 +12,8 @@ parameters: []
 headers:
   - name: apikey
     disabled: false
-    value: "{{ apikey }}"
+    value: openshift
+    id: pair_4fdfe290d1a44f85b0c7f49caea9085a
 authentication: {}
 metaSortKey: -1667487179360
 isPrivate: false

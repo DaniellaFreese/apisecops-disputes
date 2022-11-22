@@ -1,14 +1,14 @@
 _id: spc_cfd3cb71496d467299baefae57008bfe
 type: ApiSpec
 parentId: wrk_5e4810a1d7b9456995c2136aa4c7e7e9
-modified: 1667499945755
+modified: 1669133233196
 created: 1667225195850
 fileName: disputes.yaml
 contents: "openapi: 3.0.0
 
   info:
 
-  \  version: 1.0.0
+  \  version: v2
 
   \  title: 'Disputes'
 
@@ -24,7 +24,11 @@ contents: "openapi: 3.0.0
 
   \    description: Staging Server
 
-  \ \ 
+
+  tags:\ 
+
+  \  - name: disputes
+
 
   x-kong-service-defaults:
 
@@ -56,6 +60,10 @@ contents: "openapi: 3.0.0
 
   \      summary: Return a list of disputes
 
+  \      tags:\ 
+
+  \        - disputes
+
   \      responses:\ 
 
   \       '200':\ 
@@ -72,12 +80,13 @@ contents: "openapi: 3.0.0
 
   \               items:\ 
 
-  \                 $ref: '#/components/schemas/Dispute'
+  \                 $ref: '#/components/schemas/Dispute'              \ 
+
+  \                \ 
 
   \       '400':\ 
 
-  \          description: Bad request. User Id must ben an integer larger than
-  zero
+  \          description: Bad request.
 
   \       '401':
 
@@ -88,6 +97,12 @@ contents: "openapi: 3.0.0
   \          description: Unexpected Error.\ 
 
   \  /dispute/{id}:
+
+  \    x-kong-route-defaults:
+
+  \      strip_path: false
+
+  \      protocols: [http]
 
   \    get:
 
@@ -105,7 +120,11 @@ contents: "openapi: 3.0.0
 
   \           required: true
 
-  \      summary: Return a list of disputes
+  \      summary: Return a dispute by id.
+
+  \      tags:\ 
+
+  \        - disputes
 
   \      security:
 
@@ -125,10 +144,19 @@ contents: "openapi: 3.0.0
 
   \               $ref: '#/components/schemas/Dispute'
 
+  \             example:\ 
+
+  \               cardId: \"dtp12345\"
+
+  \               chargeId: \"abc15785\"
+
+  \               id: 1
+
+  \               status: \"in-progress\"
+
   \       '400':\ 
 
-  \         description: Bad request. User Id must ben an integer larger than
-  zero
+  \         description: Bad request.
 
   \       '401':
 
@@ -154,7 +182,7 @@ contents: "openapi: 3.0.0
 
   \        config:
 
-  \          key_names: [ \"mykey\", \"yourkey\" ]
+  \          key_names: [ \"api-key-1\", \"api-key-2\" ]
 
   \          hide_credentials: true
 
@@ -172,21 +200,31 @@ contents: "openapi: 3.0.0
 
   \          type: string
 
+  \          example: \"dtp12345\"
+
   \        chargeId:\ 
 
-  \          type: string\ 
+  \          type: string
+
+  \          example: \"abc15785\"
 
   \        reason:\ 
 
   \          type: string
 
+  \          example: \"duplicate charge\"
+
   \        id:\ 
 
   \          type: integer
 
+  \          example: 1
+
   \        status:\ 
 
   \          type: string
+
+  \          example: \"in-progress\"
 
   \  "
 contentType: yaml
