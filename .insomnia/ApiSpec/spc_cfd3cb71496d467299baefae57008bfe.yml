@@ -1,7 +1,7 @@
 _id: spc_cfd3cb71496d467299baefae57008bfe
 type: ApiSpec
 parentId: wrk_5e4810a1d7b9456995c2136aa4c7e7e9
-modified: 1669133233196
+modified: 1669133296637
 created: 1667225195850
 fileName: disputes.yaml
 contents: "openapi: 3.0.0
@@ -28,17 +28,6 @@ contents: "openapi: 3.0.0
   tags:\ 
 
   \  - name: disputes
-
-
-  x-kong-service-defaults:
-
-  \  retries: 10
-
-  \  connect_timeout: 30000
-
-  \  write_timeout: 30000
-
-  \  read_timeout: 30000
 
 
   x-kong-name: disputes
@@ -177,16 +166,6 @@ contents: "openapi: 3.0.0
   \      name: apikey
 
   \      in: header
-
-  \      x-kong-security-key-auth:
-
-  \        config:
-
-  \          key_names: [ \"api-key-1\", \"api-key-2\" ]
-
-  \          hide_credentials: true
-
-  \          run_on_preflight: false
 
   \  schemas:\ 
 
