@@ -1,10 +1,10 @@
 _id: req_wrk_5e4810a1d7b9456995c2136aa4c7e7e9fdf8e81d
 type: Request
-parentId: wrk_5e4810a1d7b9456995c2136aa4c7e7e9
-modified: 1669130095878
-created: 1667487179360
+parentId: fld_wrk_5e4810a1d7b9456995c2136aa4c7e7e92033b7c1
+modified: 1669148344393
+created: 1669148344393
 url: "{{ base_url }}/dispute/{{ id }}"
-name: Return a list of disputes
+name: Return a dispute by id.
 description: ""
 method: GET
 body: {}
@@ -12,10 +12,9 @@ parameters: []
 headers:
   - name: apikey
     disabled: false
-    value: openshift
-    id: pair_4fdfe290d1a44f85b0c7f49caea9085a
+    value: "{{ apikey }}"
 authentication: {}
-metaSortKey: -1667487179360
+metaSortKey: -1669148344393
 isPrivate: false
 settingStoreCookies: true
 settingSendCookies: true

@@ -1,7 +1,7 @@
 _id: spc_cfd3cb71496d467299baefae57008bfe
 type: ApiSpec
 parentId: wrk_5e4810a1d7b9456995c2136aa4c7e7e9
-modified: 1669133296637
+modified: 1669222964904
 created: 1667225195850
 fileName: disputes.yaml
 contents: "openapi: 3.0.0
@@ -16,18 +16,18 @@ contents: "openapi: 3.0.0
 
   servers:
 
-  \  - url: http://acme-dev-gateway.io/api/v1
+  \  - url:
+  https://acdaa8a022deb4e7bbe48b057e729a9e-1554818984.us-west-2.elb.amazonaws.c\
+  om/api/v1
 
-  \    description: Dev Server
-
-  \  - url: http://acme-dev-gateway.io/api/v1
-
-  \    description: Staging Server
+  \    description: Sandbox Server
 
 
   tags:\ 
 
   \  - name: disputes
+
+  \    description: \"disputes apis for acme bank\"
 
 
   x-kong-name: disputes
@@ -53,6 +53,10 @@ contents: "openapi: 3.0.0
 
   \        - disputes
 
+  \      security:
+
+  \        - keyAuth: []
+
   \      responses:\ 
 
   \       '200':\ 
@@ -69,9 +73,7 @@ contents: "openapi: 3.0.0
 
   \               items:\ 
 
-  \                 $ref: '#/components/schemas/Dispute'              \ 
-
-  \                \ 
+  \                 $ref: '#/components/schemas/Dispute'        \ 
 
   \       '400':\ 
 
