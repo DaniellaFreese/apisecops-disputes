@@ -1,7 +1,7 @@
 _id: spc_cfd3cb71496d467299baefae57008bfe
 type: ApiSpec
 parentId: wrk_5e4810a1d7b9456995c2136aa4c7e7e9
-modified: 1671562683153
+modified: 1671562819512
 created: 1667225195850
 fileName: disputes.yaml
 contents: "openapi: 3.0.0
@@ -79,19 +79,19 @@ contents: "openapi: 3.0.0
 
   \               - cardId: \"dtp12345\"
 
-  \               chargeId: \"abc15785\"
+  \                 chargeId: \"abc15785\"
 
-  \               id: 1
+  \                 id: 1
 
-  \               status: \"in-progress\"
+  \                 status: \"in-progress\"
 
-  \              - cardId: \"dtp12345\"
+  \               - cardId: \"dtp12345\"
 
-  \               chargeId: \"eftlnask\"
+  \                 chargeId: \"eftlnask\"
 
-  \               id: 2
+  \                 id: 2
 
-  \               status: \"closed\"
+  \                 status: \"closed\"
 
   \              \ 
 
