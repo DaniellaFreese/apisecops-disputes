@@ -1,14 +1,14 @@
 _id: spc_cfd3cb71496d467299baefae57008bfe
 type: ApiSpec
 parentId: wrk_5e4810a1d7b9456995c2136aa4c7e7e9
-modified: 1671732490142
+modified: 1671733983175
 created: 1667225195850
 fileName: disputes.yaml
 contents: "openapi: 3.0.0
 
   info:
 
-  \  version: v2
+  \  version: v1
 
   \  title: 'Disputes'
 
