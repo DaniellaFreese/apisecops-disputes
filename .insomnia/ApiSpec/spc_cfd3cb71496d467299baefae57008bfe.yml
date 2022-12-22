@@ -1,7 +1,7 @@
 _id: spc_cfd3cb71496d467299baefae57008bfe
 type: ApiSpec
 parentId: wrk_5e4810a1d7b9456995c2136aa4c7e7e9
-modified: 1671562819512
+modified: 1671732490142
 created: 1667225195850
 fileName: disputes.yaml
 contents: "openapi: 3.0.0
@@ -16,9 +16,7 @@ contents: "openapi: 3.0.0
 
   servers:
 
-  \  - url:
-  https://acdaa8a022deb4e7bbe48b057e729a9e-1554818984.us-west-2.elb.amazonaws.c\
-  om/api/v1
+  \  - url: http://sandbox:8080
 
   \    description: Sandbox Server
 
@@ -81,7 +79,7 @@ contents: "openapi: 3.0.0
 
   \                 chargeId: \"abc15785\"
 
-  \                 id: 1
+  \                 id: 0
 
   \                 status: \"in-progress\"
 
@@ -89,7 +87,7 @@ contents: "openapi: 3.0.0
 
   \                 chargeId: \"eftlnask\"
 
-  \                 id: 2
+  \                 id: 1
 
   \                 status: \"closed\"
 
@@ -161,7 +159,7 @@ contents: "openapi: 3.0.0
 
   \               chargeId: \"abc15785\"
 
-  \               id: 1
+  \               id: 0
 
   \               status: \"in-progress\"
 
